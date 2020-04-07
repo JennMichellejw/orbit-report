@@ -35,7 +35,7 @@ export class AppComponent {
             this.sourceList.push(satellite)
             
           }
-          console.log(this.sourceList)
+          //console.log(this.sourceList)
           
        }.bind(this));
     }.bind(this));
