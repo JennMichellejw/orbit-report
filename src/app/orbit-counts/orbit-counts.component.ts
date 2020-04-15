@@ -9,57 +9,66 @@ import { Satellite } from '../satellite';
 
 })
 export class OrbitCountsComponent implements OnInit {
-  @Input('debris') spaceDebris: number ;
-  communication: number;
-  probe: number;
-  positioning: number;
-  spaceStation: number;
-  telescope: number;
   @Input() satellites: Satellite[];
- 
+
+  satelliteCounts = {
+    spaceDebris: 0,
+    communication: 0,
+    probe: 0,
+    positioning: 0,
+    spaceStation: 0,
+    telescope: 0
+  }
 
   
   ngOnInit() {
     
     };
-    
+
   constructor() { 
   
   };
   
   
   counts(satellite): void {
-    let spaceDebris = 0;
-    let communication: number =0;
-    let probe: number = 0;
-    let positioning: number = 0;
-    let spaceStation: number = 0;
-    let telescope: number = 0;
+    let spaceDebrisCount = 0;
+    let communicationCount = 0;
+    let probeCount: number = 0;
+    let positioningCount: number = 0;
+    let spaceStationCount: number = 0;
+    let telescopeCount: number = 0;
 
       for(let satellite of this.satellites){
         if(satellite.type === 'Space Debris'){
-          spaceDebris = spaceDebris + 1
+          spaceDebrisCount = spaceDebrisCount + 1
         } 
         if(satellite.type === 'Communication'){
-          communication =+ 1
+          communicationCount = communicationCount + 1
         }
         if(satellite.type === 'Probe'){
-          probe =+ 1
+          probeCount += 1
         }
         if (satellite.type === 'Positioning'){
-          positioning =+ 1
+          positioningCount += 1
         } 
         if(satellite.type === 'Space Station'){
-          spaceStation =+ 1
+          spaceStationCount += 1
         } 
         if (satellite.type === 'Telescope'){
-          telescope =+ 1
+          telescopeCount += 1
         }
-                
-      
-      };
-      console.log(spaceDebris)
+               
+        this.satelliteCounts.spaceDebris = spaceDebrisCount;
+        this.satelliteCounts.communication = communicationCount;       
+        this.satelliteCounts.probe = probeCount;
+        this.satelliteCounts.positioning = positioningCount;
+        this.satelliteCounts.spaceStation = spaceStationCount;
+        this.satelliteCounts.telescope = telescopeCount;
 
+
+      };
+      
+ 
 }
   
 }
